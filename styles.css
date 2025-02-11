@@ -451,3 +451,50 @@ body {
     opacity: 1;
     transition: opacity 0.5s;
 }
+
+.hidden.final-wrapper {
+    display: none;
+}
+
+.shown.final-wrapper {
+    display: block;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.final-sticker {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: float2 3s ease-in-out 1s infinite;
+}
+
+.final-message {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100% - 200px);
+    /* Limit width with 100px margin on left and right */
+    font-family: 'Franxurter Totally Fat', sans-serif;
+    font-size: 2.5em;
+    color: white;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 6px;
+    -webkit-text-stroke-color: var(--color-message);
+    paint-order: stroke fill;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@keyframes float2 {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px) rotate(1deg);
+    }
+}
