@@ -3,6 +3,9 @@ $(document).ready(function () {
     const introText = $('#intro-text');
     const introMessage = $('#intro-message');
     const sticker = $('#sticker');
+    const yesButton = $('#yes-button');
+    const noButton = $('#no-button');
+    const buttons = $('.buttons');
     const messages = ["Hi Babyyyy!", "Happy Valentines!", "..."];
     let messageIndex = 0;
 
@@ -30,10 +33,43 @@ $(document).ready(function () {
         envelope.on('click', function () {
             if (envelope.hasClass("open")) {
                 envelope.removeClass("open").addClass("close");
+                buttons.removeClass('shown').addClass('hidden');
             } else {
                 envelope.removeClass("close").addClass("open");
+                buttons.removeClass('hidden').addClass('shown');
             }
         });
+
+        yesButton.on('click', function () {
+            console.log("Yay! Happy Valentine's Day!");
+        });
+
+        noButton.on('click', function () {
+            console.log("Oh no! Maybe next time.");
+        });
+
+        const animateMove = (element, prop, pixels) =>
+            anime({
+                targets: element,
+                [prop]: `${pixels}px`,
+                easing: "easeOutCirc"
+            });
+
+        ["mouseover", "click"].forEach(function (el) {
+            noButton.on(el, function () {
+                if (envelope.hasClass("open")) {
+                    const top = getRandomNumber($('body').height() - noButton.outerHeight());
+                    const left = getRandomNumber($('body').width() - noButton.outerWidth());
+
+                    animateMove(noButton[0], "left", left).play();
+                    animateMove(noButton[0], "top", top).play();
+                }
+            });
+        });
+
+        const getRandomNumber = (num) => {
+            return Math.floor(Math.random() * (num + 1));
+        };
     }
 
     function adjustFontSize() {
@@ -56,9 +92,17 @@ $(document).ready(function () {
         sticker.css('width', Math.max(minImageSize, Math.min(maxImageSize, imageSize)) + 'px');
     }
 
-    $(window).on('resize', adjustFontSize);
-    adjustFontSize(); // Initial call to set the font size
+    function resetNoButtonPosition() {
+        noButton.css('bottom', '20vh');
+        noButton.css('left', '55%');
+    }
 
+    $(window).on('resize', function () {
+        adjustFontSize();
+        resetNoButtonPosition();
+    });
+
+    adjustFontSize(); // Initial call to set the font size
     showNextMessage();
 
     $(document).on('mousemove', function (e) {

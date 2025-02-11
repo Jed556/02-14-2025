@@ -7,7 +7,7 @@
     --color-letter-corner: #9fe2f9;
     --color-heart: #aae7ff;
     --color-sparkle: #fff;
-    --wax-red: #54C1EF;
+    --color-shadow: #54C1EF;
 }
 
 body {
@@ -29,13 +29,15 @@ body {
     font-size: 5em;
     color: white;
     -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 13px;
+    -webkit-text-stroke-width: 10px;
+    /* Adjust stroke width */
     -webkit-text-stroke-color: var(--color-message);
     paint-order: stroke fill;
     text-transform: uppercase;
     opacity: 0;
     animation: fadeInOut 3s ease-in-out forwards;
     font-family: 'Franxurter Totally Fat', sans-serif;
+    /* Use the font for the intro message */
     display: flex;
     align-items: center;
     transition: font-size 0.3s ease, -webkit-text-stroke-width 0.3s ease;
@@ -372,4 +374,80 @@ body {
     50% {
         transform: scale(1.5);
     }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* .buttons {
+    justify-content: center;
+    position: fixed;
+    bottom: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+} */
+
+.buttons {
+    background-color: white;
+    border: 2px solid var(--color-message);
+    color: var(--color-message);
+    padding: 12px 25px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Franxurter Totally Fat', sans-serif;
+    /* Use the font for the buttons */
+    position: fixed;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    width: fit-content;
+    height: fit-content;
+}
+
+#no-button {
+    bottom: 20vh;
+    left: 55%;
+}
+
+#yes-button {
+    bottom: 20vh;
+    left: 45%;
+}
+
+.buttons:hover {
+    background-color: var(--color-env);
+    /* transform: translateY(-3px) scaleX(1.05); */
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.2);
+}
+
+.buttons.hidden {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.buttons.shown {
+    opacity: 1;
+    transition: opacity 0.5s;
 }
