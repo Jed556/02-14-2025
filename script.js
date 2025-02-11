@@ -13,6 +13,9 @@ $(document).ready(function () {
     const messages = ["Hi Babyyyy!", "Happy Valentines!", "..."];
     let messageIndex = 0;
 
+    const basePattern = 'assets/Pattern2.png';
+    const finalPattern = 'assets/Pattern1.png';
+
     function showNextMessage() {
         if (messageIndex < messages.length) {
             introMessage.text(messages[messageIndex]);
@@ -51,6 +54,7 @@ $(document).ready(function () {
             $('body').children().css('opacity', '0').css('pointer-events', 'none');
             adjustFinalElements();
             showFinalMessage();
+            changeBackgroundPattern(finalPattern); // Change background pattern
         });
 
         noButton.on('click', function () {
@@ -100,6 +104,10 @@ $(document).ready(function () {
         };
     }
 
+    function changeBackgroundPattern(pattern) {
+        $('body').css('background-image', `url(${pattern})`);
+    }
+
     function adjustFontSize() {
         const windowWidth = $(window).width();
         const minFontSize = 1; // Minimum font size in em
@@ -138,6 +146,7 @@ $(document).ready(function () {
         const randomSticker = stickers[Math.floor(Math.random() * stickers.length)];
         finalSticker.attr('src', randomSticker);
         finalWrapper.removeClass('hidden').addClass('shown');
+        $('body').addClass('final-message-shown'); // Add class to body
     }
 
     function adjustFinalElements() {
@@ -169,6 +178,7 @@ $(document).ready(function () {
     adjustFontSize(); // Initial call to set the font size
     centerButtons(); // Initial call to center the buttons
     showNextMessage(); // Start the message loop
+    changeBackgroundPattern(basePattern); // Set initial background pattern
 
     $(document).on('mousemove', function (e) {
         const x = (window.innerWidth / 2 - e.pageX) / 20;

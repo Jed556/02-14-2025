@@ -21,6 +21,19 @@ body {
     justify-content: center;
     overflow: hidden;
     /* Hide overflow to prevent scrollbars */
+    background-image: url('assets/Pattern1.png');
+    background-size: 200px;
+    background-repeat: repeat;
+    background-position: 0 0, 50px 50px;
+    /* Offset alternating tiles */
+    animation: scrollBackground 60s linear infinite;
+    transition: background-image 1s ease-in-out;
+    /* Add transition for background image */
+}
+
+body.final-message-shown {
+    background-image: url('assets/Pattern1.png'), url('assets/bg.png');
+    /* Add second background image */
 }
 
 .intro-text {
@@ -565,5 +578,15 @@ body {
 
     50% {
         transform: translateX(-50%) translateY(-10px) rotate(1deg);
+    }
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0 100%;
+    }
+
+    100% {
+        background-position: 100% 0;
     }
 }
