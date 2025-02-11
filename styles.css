@@ -21,6 +21,45 @@ body {
     justify-content: center;
 }
 
+.intro-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: var(--color-message);
+    opacity: 0;
+    animation: fadeInOut 3s ease-in-out forwards;
+    font-family: 'Franxurter Totally Fat', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+#sticker {
+    display: none;
+    width: 100px;
+    height: auto;
+    margin-left: 10px;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 #envelope {
     position: relative;
     width: 280px;
@@ -36,7 +75,16 @@ body {
     transition: transform 0.2s ease-out;
     transform: scale(1.2);
     opacity: 0;
-    animation: 1s scaleDown 1s forwards;
+    animation: scaleDown 1s forwards;
+    animation-delay: 9s;
+    /* Delay to account for the intro text animation */
+    pointer-events: none;
+    /* Disable clicking */
+}
+
+#envelope.animate {
+    pointer-events: auto;
+    /* Enable clicking after animation */
 }
 
 @keyframes scaleDown {
@@ -317,8 +365,4 @@ body {
     50% {
         transform: scale(1.5);
     }
-}
-
-.reset {
-    display: none;
 }
