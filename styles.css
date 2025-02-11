@@ -19,6 +19,8 @@ body {
     align-items: center;
     perspective: 1000px;
     justify-content: center;
+    overflow: hidden;
+    /* Hide overflow to prevent scrollbars */
 }
 
 .intro-text {
@@ -394,6 +396,73 @@ body {
     100% {
         opacity: 0;
     }
+}
+
+@keyframes fadeInEnlargeShakeShrinkFadeOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    10% {
+        transform: scale(1.5);
+    }
+
+    30%,
+    50%,
+    70% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: scale(1) rotate(10deg);
+    }
+
+    45% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    55% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    65% {
+        transform: rotate(-10deg);
+    }
+
+    70% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+.no-button-sticker {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: auto;
+    display: none;
+    animation: fadeInEnlargeShakeShrinkFadeOut 2s ease-in-out forwards;
 }
 
 /* .buttons {

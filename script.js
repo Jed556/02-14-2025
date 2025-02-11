@@ -65,13 +65,32 @@ $(document).ready(function () {
             });
 
         ["mouseover", "click"].forEach(function (el) {
-            noButton.on(el, function () {
+            noButton.on(el, function (event) {
                 if (envelope.hasClass("open")) {
                     const top = getRandomNumber($('body').height() - noButton.outerHeight());
                     const left = getRandomNumber($('body').width() - noButton.outerWidth());
 
                     animateMove(noButton[0], "left", left).play();
                     animateMove(noButton[0], "top", top).play();
+
+                    const stickers = ['assets/cinnamons/sticker9.png', 'assets/cinnamons/sticker10.png', 'assets/cinnamons/sticker11.png', 'assets/cinnamons/sticker12.png'];
+                    const randomSticker = stickers[Math.floor(Math.random() * stickers.length)];
+                    const noButtonSticker = $('<img>', {
+                        src: randomSticker,
+                        class: 'no-button-sticker',
+                        css: {
+                            top: `${event.pageY + 20}px`,
+                            left: `${event.pageX}px`,
+                            position: "fixed",
+                            transform: "translate(-50%, -50%)",
+                            width: "120px",
+                            height: "auto",
+                            display: "block", // Ensure the sticker is displayed
+                            animation: "fadeInEnlargeShakeShrinkFadeOut 2s ease-in-out forwards",
+                        }
+                    });
+                    $('body').append(noButtonSticker);
+                    setTimeout(() => noButtonSticker.remove(), 3000); // Remove after animation
                 }
             });
         });
