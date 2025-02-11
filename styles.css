@@ -26,13 +26,19 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2em;
-    color: var(--color-message);
+    font-size: 5em;
+    color: white;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 13px;
+    -webkit-text-stroke-color: var(--color-message);
+    paint-order: stroke fill;
+    text-transform: uppercase;
     opacity: 0;
     animation: fadeInOut 3s ease-in-out forwards;
     font-family: 'Franxurter Totally Fat', sans-serif;
     display: flex;
     align-items: center;
+    transition: font-size 0.3s ease, -webkit-text-stroke-width 0.3s ease;
 }
 
 #sticker {
@@ -40,6 +46,7 @@ body {
     width: 100px;
     height: auto;
     margin-left: 10px;
+    transition: width 0.3s ease;
 }
 
 @keyframes fadeInOut {

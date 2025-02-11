@@ -36,6 +36,29 @@ $(document).ready(function () {
         });
     }
 
+    function adjustFontSize() {
+        const windowWidth = $(window).width();
+        const minFontSize = 1; // Minimum font size in em
+        const maxFontSize = 5; // Maximum font size in em
+        const minStrokeWidth = 5; // Minimum stroke width in px
+        const maxStrokeWidth = 13; // Maximum stroke width in px
+        const minImageSize = 50; // Minimum image size in px
+        const maxImageSize = 100; // Maximum image size in px
+        const minWidth = 576; // Minimum window width
+        const maxWidth = 1200; // Maximum window width
+
+        const fontSize = minFontSize + (maxFontSize - minFontSize) * (windowWidth - minWidth) / (maxWidth - minWidth);
+        const strokeWidth = minStrokeWidth + (maxStrokeWidth - minStrokeWidth) * (windowWidth - minWidth) / (maxWidth - minWidth);
+        const imageSize = minImageSize + (maxImageSize - minImageSize) * (windowWidth - minWidth) / (maxWidth - minWidth);
+
+        introText.css('font-size', Math.max(minFontSize, Math.min(maxFontSize, fontSize)) + 'em');
+        introText.css('-webkit-text-stroke-width', Math.max(minStrokeWidth, Math.min(maxStrokeWidth, strokeWidth)) + 'px');
+        sticker.css('width', Math.max(minImageSize, Math.min(maxImageSize, imageSize)) + 'px');
+    }
+
+    $(window).on('resize', adjustFontSize);
+    adjustFontSize(); // Initial call to set the font size
+
     showNextMessage();
 
     $(document).on('mousemove', function (e) {
