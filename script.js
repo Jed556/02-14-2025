@@ -13,8 +13,8 @@ $(document).ready(function () {
     const messages = ["Hi Babyyyy!", "Happy Valentines!", "..."];
     let messageIndex = 0;
 
-    const basePattern = 'assets/Pattern2.png';
-    const finalPattern = 'assets/Pattern1.png';
+    const basePattern = 'assets/background/Pattern2.png';
+    const finalPattern = 'assets/background/Pattern1.png';
 
     function showNextMessage() {
         if (messageIndex < messages.length) {
@@ -23,7 +23,7 @@ $(document).ready(function () {
             introText[0].offsetHeight; // Trigger reflow
             introText.css('animation', '');
             if (messageIndex === 1) {
-                const stickers = ['assets/cinnamons/sticker6.png', 'assets/cinnamons/sticker7.png'];
+                const stickers = ['assets/stickers/sticker6.png', 'assets/stickers/sticker7.png'];
                 const randomSticker = stickers[Math.floor(Math.random() * stickers.length)];
                 sticker.attr('src', randomSticker);
                 sticker.show();
@@ -77,7 +77,7 @@ $(document).ready(function () {
                     animateMove(noButton[0], "left", left).play();
                     animateMove(noButton[0], "top", top).play();
 
-                    const stickers = ['assets/cinnamons/sticker9.png', 'assets/cinnamons/sticker10.png', 'assets/cinnamons/sticker11.png', 'assets/cinnamons/sticker12.png'];
+                    const stickers = ['assets/stickers/sticker9.png', 'assets/stickers/sticker10.png', 'assets/stickers/sticker11.png', 'assets/stickers/sticker12.png'];
                     const randomSticker = stickers[Math.floor(Math.random() * stickers.length)];
                     const noButtonSticker = $('<img>', {
                         src: randomSticker,
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
 
     function showFinalMessage() {
-        const stickers = ['assets/cinnamons/sticker1.png', 'assets/cinnamons/sticker3.png', 'assets/cinnamons/sticker8.png'];
+        const stickers = ['assets/stickers/sticker1.png', 'assets/stickers/sticker3.png', 'assets/stickers/sticker8.png'];
         const randomSticker = stickers[Math.floor(Math.random() * stickers.length)];
         finalSticker.attr('src', randomSticker);
         finalWrapper.removeClass('hidden').addClass('shown');

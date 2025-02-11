@@ -29,6 +29,9 @@ body {
     animation: scrollBackground 60s linear infinite;
     transition: background-image 1s ease-in-out;
     /* Add transition for background image */
+    /* cursor: url('assets/cursor/Snail Cinnamoroll cursor.cur') 16 16, default;
+    cursor: url('assets/cursor/Strawberry pointer.cur') 16 16, pointer; */
+
 }
 
 body.final-message-shown {
